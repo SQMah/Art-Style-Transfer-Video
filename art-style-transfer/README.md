@@ -1,8 +1,7 @@
 # Art Style Transfer
 
-![Input](https://github.com/Faizun-Faria/Thief-Robber-Landlord-Police/blob/main/Preview/gif_english.gif)
-![Output](https://github.com/Faizun-Faria/Thief-Robber-Landlord-Police/blob/main/Preview/gif_english.gif)
-## Setup
+<img src="https://raw.githubusercontent.com/SQMah/YOLOv3-Plate-Detection/master/assets/low_light.jpg" height="250px"></img>
+<img src="https://raw.githubusercontent.com/SQMah/YOLOv3-Plate-Detection/master/assets/low_light.jpg" height="250px"></img>
 
 ---
 Use your choice of Python 3.7+ virtual environment or conda environment.
