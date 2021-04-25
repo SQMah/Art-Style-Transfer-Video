@@ -26,7 +26,7 @@ def get_dims(img: np.ndarray, minor_dim: int) -> tuple:
     else:
         ratio: float = h / w
         h_prime: int = int(ratio * minor_dim)
-        return h_prime, minor_dim
+        return minor_dim, h_prime
 
 
 def resize(img: np.ndarray, minor_dim: int) -> np.ndarray:

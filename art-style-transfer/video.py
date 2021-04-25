@@ -5,34 +5,36 @@ from typing import Union
 import os
 import argparse
 
-
-def run_video(src: Union[str, int], url: str, img_path: str, res: int, write_out: bool = False):
+def run_video(src: Union[str, int], url: str, img_path: str, res: int, skip_frames: int = 1, write_out: bool = False):
     if type(src) == str and not os.path.isfile(src):
         raise ValueError(f"File path: {src} is not a valid video file path!")
     if not os.path.isfile(img_path):
         raise ValueError(f"File path: {img_path} is not a valid input style image path!")
 
+    i = 0
     cap = cv2.VideoCapture(src)
     style_image: np.ndarray = load_image(img_path)
     model = load_model(url)
     if write_out:
         status, img = cap.read()
         fourcc = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
-        video = cv2.VideoWriter("out.mp4", fourcc, 30, get_dims(img, res))
+        video = cv2.VideoWriter("out.mp4", fourcc, 30 // skip_frames, get_dims(img, res))
 
     while cap.isOpened():
         status, img = cap.read()
-        img = cv2.cvtColor(resize(img, res), cv2.COLOR_BGR2RGB) / 255
-        img = np.expand_dims(img, axis=0)
-        img = np.ndarray.astype(img, np.float32)
-        out = run(src=style_image, transfer=img, model=model)
-        out = cv2.cvtColor(np.ndarray.astype(out[0].numpy() * 255, np.uint8), cv2.COLOR_RGB2BGR)
+        if i % skip_frames == 0:
+            i = 0
+            img = cv2.cvtColor(resize(img, res), cv2.COLOR_BGR2RGB) / 255
+            img = np.expand_dims(img, axis=0)
+            img = np.ndarray.astype(img, np.float32)
+            out = run(src=style_image, transfer=img, model=model)
+            out = cv2.cvtColor(np.ndarray.astype(out[0].numpy() * 255, np.uint8), cv2.COLOR_RGB2BGR)
 
-        if write_out:
-            video.write(out)
-        else:
+            if write_out:
+                video.write(out)
             cv2.imshow("Output", out)
             cv2.waitKey(1)
+        i += 1
 
     if write_out:
         video.release()
@@ -57,5 +59,6 @@ if __name__ == "__main__":
     parser.add_argument('--r', '--resolution', type=int, default=360, help="Resolution of the smallest dimension of "
                                                                            "the input.")
     parser.add_argument('--w', '--write', type=bool, default=False, help="Whether or not to write the output.")
+    parser.add_argument('--f', '--frame_skip', type=int, default=1, help="Number of frames to skip between processing.")
     args = parser.parse_args()
-    run_video(args.s, args.u, get_img_url(args.i), args.r, args.w)
+    run_video(args.s, args.u, get_img_url(args.i), args.r, args.f, args.w)
