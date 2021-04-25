@@ -1,7 +1,7 @@
 import numpy as np
 from utils import load_model, run, load_image, resize
 import cv2
-from typing import Union
+import tensorflow as tf
 import os
 import argparse
 
@@ -13,13 +13,13 @@ def run_img(src: str, url: str, img_path: str, res: int, write_out: bool = False
         raise ValueError(f"File path: {img_path} is not a valid input style image path!")
 
     style_image: np.ndarray = load_image(img_path)
-    img = load_image(src)
+    img = cv2.imread(src)
     model = load_model(url)
 
     img = cv2.cvtColor(resize(img, res), cv2.COLOR_BGR2RGB) / 255
     img = np.expand_dims(img, axis=0)
     img = np.ndarray.astype(img, np.float32)
-    out = run(src=style_image, transfer=img, model=model)
+    out = run(src=tf.constant(style_image), transfer=img, model=model)
     out = cv2.cvtColor(np.ndarray.astype(out[0].numpy() * 255, np.uint8), cv2.COLOR_RGB2BGR)
     if write_out:
         cv2.imwrite("out.jpg", out)
