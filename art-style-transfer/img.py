@@ -40,10 +40,10 @@ if __name__ == "__main__":
     parser.add_argument('--i', '---img_name',
                         default=DEFAULT_IMG,
                         help="Image name of the artwork to transfer the style from in the art folder.")
-    parser.add_argument('--s', '--src', default=0, help="Input image")
+    parser.add_argument('src', help="Input image")
 
     parser.add_argument('--u', '--url', default=HANDLE, help="URL to the tf hub model.")
     parser.add_argument('--r', '--resolution', type=int, default=360, help="Resolution of the smallest dimension of "
                                                                            "the input.")
     args = parser.parse_args()
-    run_img(args.s, args.u, get_img_url(args.i), args.r)
+    run_img(args.src, args.u, get_img_url(args.i), args.r)
