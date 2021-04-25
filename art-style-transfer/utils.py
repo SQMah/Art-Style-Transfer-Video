@@ -63,12 +63,12 @@ def load_image(image_path: str, image_size: tuple[int, int] = (256, 256), preser
     return img
 
 
-def run(src: np.ndarray, transfer: np.ndarray, model) -> tf.Tensor:
+def run(src: tf.Tensor, transfer: np.ndarray, model) -> tf.Tensor:
     """Returns a style transfered image
     :param src: source image to get styles from
     :param transfer: image to transfer style to
     :param model: preloaded tensorflow model
     :return style transferred image"""
-    outputs = model(tf.constant(transfer), tf.constant(src))
+    outputs = model(tf.constant(transfer), src)
     stylized_image = outputs[0]
     return stylized_image

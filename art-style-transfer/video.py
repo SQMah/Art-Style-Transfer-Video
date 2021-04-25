@@ -4,6 +4,7 @@ import cv2
 from typing import Union
 import os
 import argparse
+import tensorflow as tf
 
 def run_video(src: Union[str, int], url: str, img_path: str, res: int, skip_frames: int = 1, write_out: bool = False):
     if type(src) == str and not os.path.isfile(src):
@@ -13,7 +14,7 @@ def run_video(src: Union[str, int], url: str, img_path: str, res: int, skip_fram
 
     i = 0
     cap = cv2.VideoCapture(src)
-    style_image: np.ndarray = load_image(img_path)
+    style_image: np.ndarray = tf.constant(load_image(img_path))
     model = load_model(url)
     if write_out:
         status, img = cap.read()
