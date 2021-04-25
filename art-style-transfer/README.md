@@ -1,6 +1,5 @@
 # Art Style Transfer
 ## Setup
----
 Use your choice of Python 3.7+ virtual environment or conda environment.
 
 **Make sure environment is 3.7+**
@@ -10,8 +9,6 @@ Then run:
 ``pip install -r requirements.txt``
 
 ## Video
-
----
 ``python video.py``
 
 Note the following arguments, which are all optional:
@@ -34,8 +31,6 @@ optional arguments:
 ```
 
 ## Image
-
----
 ``python img.py [path to input image]``
 
 Pass any image preprocessing logic (i.e. blurring) into the ``preprocess`` argument as a function. Note that the preprocessing function should return a ``numpy.ndarray``.
