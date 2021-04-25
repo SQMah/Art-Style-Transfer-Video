@@ -1,8 +1,5 @@
 # Art Style Transfer
-
-<img src="https://raw.githubusercontent.com/SQMah/YOLOv3-Plate-Detection/master/assets/low_light.jpg" height="250px"></img>
-<img src="https://raw.githubusercontent.com/SQMah/YOLOv3-Plate-Detection/master/assets/low_light.jpg" height="250px"></img>
-
+## Setup
 ---
 Use your choice of Python 3.7+ virtual environment or conda environment.
 
