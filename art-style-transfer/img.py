@@ -6,14 +6,20 @@ import os
 import argparse
 
 
-def run_img(src: str, url: str, img_path: str, res: int, write_out: bool = False):
+def img_preprocess(img: np.ndarray) -> np.ndarray:
+    """Put any image preprocessing logic here."""
+    return img
+
+
+def run_img(src: str, url: str, img_path: str, res: int, preprocess=img_preprocess, write_out: bool = False):
     if not os.path.isfile(src):
         raise ValueError(f"File path: {src} is not a valid video file path!")
     if not os.path.isfile(img_path):
         raise ValueError(f"File path: {img_path} is not a valid input style image path!")
 
     style_image: np.ndarray = load_image(img_path)
-    img = cv2.imread(src)
+    img = preprocess(cv2.imread(src))
+
     model = load_model(url)
 
     img = cv2.cvtColor(resize(img, res), cv2.COLOR_BGR2RGB) / 255
@@ -45,5 +51,6 @@ if __name__ == "__main__":
     parser.add_argument('--u', '--url', default=HANDLE, help="URL to the tf hub model.")
     parser.add_argument('--r', '--resolution', type=int, default=360, help="Resolution of the smallest dimension of "
                                                                            "the input.")
+    parser.add_argument('--w', '--write', type=bool, default=False, help="Whether or not to write the output.")
     args = parser.parse_args()
-    run_img(args.src, args.u, get_img_url(args.i), args.r)
+    run_img(args.src, args.u, get_img_url(args.i), args.r, write_out=args.w)

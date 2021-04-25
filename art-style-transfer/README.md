@@ -38,9 +38,11 @@ optional arguments:
 ---
 ``python img.py [path to input image]``
 
+Pass any image preprocessing logic (i.e. blurring) into the ``preprocess`` argument as a function. Note that the preprocessing function should return a ``numpy.ndarray``.
+
 Note the following arguments, which are all optional except for src:
 ```
-usage: img.py [-h] [--i I] [--u U] [--r R] src
+usage: img.py [-h] [--i I] [--u U] [--r R] [--w W] src
 
 positional arguments:
   src                   Input image
@@ -52,4 +54,5 @@ optional arguments:
   --u U, --url U        URL to the tf hub model.
   --r R, --resolution R
                         Resolution of the smallest dimension of the input.
+  --w W, --write W      Whether or not to write the output.
 ```
