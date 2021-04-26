@@ -1,5 +1,5 @@
 # Art Style Transfer
-<img src="./assets/in.gif" height="700px">            <img src="./assets/out.gif" height="700px">
+<img src="./assets/in.gif" width="48%"><img src="./assets/out.gif" width="48%">
 
 ## Setup
 Use your choice of Python 3.9+ virtual environment or conda environment.
