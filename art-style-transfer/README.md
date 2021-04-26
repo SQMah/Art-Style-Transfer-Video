@@ -1,4 +1,6 @@
 # Art Style Transfer
+![Image](../blob/master/art-style-transfer/assets/in.gif?raw=true)
+
 ## Setup
 Use your choice of Python 3.9+ virtual environment or conda environment.
 
