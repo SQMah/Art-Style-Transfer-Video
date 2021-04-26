@@ -1,8 +1,8 @@
 # Art Style Transfer
 ## Setup
-Use your choice of Python 3.7+ virtual environment or conda environment.
+Use your choice of Python 3.9+ virtual environment or conda environment.
 
-**Make sure environment is 3.7+**
+**Make sure environment is 3.9+**
 
 Then run:
 
