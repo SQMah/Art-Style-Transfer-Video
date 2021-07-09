@@ -1,5 +1,6 @@
 # Art-Style-Transfer-Video
 Art style transfer for images and *video*. Save and resize your outputs. Example artworks included.
+
 <img src="./assets/in.gif" width="48%"><img src="./assets/out.gif" width="48%">
 
 ## Setup
