@@ -1,7 +1,6 @@
-# Art Style Transfer
+# Artistic-Image-and-Video
+Art style transfer for images and *video*. Save and resize your outputs. Example artworks included.
 <img src="./assets/in.gif" width="48%"><img src="./assets/out.gif" width="48%">
-
-For images and *video*. Save and resize your outputs. Example artworks included.
 
 ## Setup
 Use your choice of Python 3.7+ virtual environment or conda environment.
