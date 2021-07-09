@@ -1,11 +1,9 @@
 # Art Style Transfer
 <img src="./assets/in.gif" width="48%"><img src="./assets/out.gif" width="48%">
+For images and *video*.
 
 ## Setup
-Use your choice of Python 3.9+ virtual environment or conda environment.
-
-**Make sure environment is 3.9+**
-
+Use your choice of Python 3.7+ virtual environment or conda environment.
 Then run:
 
 ``pip install -r requirements.txt``
